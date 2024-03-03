@@ -354,6 +354,7 @@ export default {
 </template>
 
 <style scoped>
+/* #region LOADER */
 .lds-spinner {
     color: official;
     display: inline-block;
@@ -439,14 +440,32 @@ export default {
     animation-delay: 0s;
 }
 
+@keyframes lds-spinner {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* #endregion LOADER */
+
+/* #region GLOBAL RULES */
 p,
 span,
 h1 {
+
     color: #022402;
 }
 
+/* #endregion GLOBAL RULES */
+
+/* #region POKEDEX CASE */
 .wrapper {
     max-width: 768px;
+    font-size: xx-small;
 }
 
 .case {
@@ -474,6 +493,9 @@ h1 {
     overflow-y: auto;
 }
 
+/* #endregion POKEDEX CASE */
+
+/* #region SCROOLLBAR */
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
@@ -490,6 +512,9 @@ h1 {
     background: #242424;
 }
 
+/* #endregion INPUTS */
+
+/* #region SCREENS */
 .action {
     width: 50px;
 }
@@ -522,16 +547,9 @@ h1 {
     border-radius: 10px;
 }
 
-@keyframes lds-spinner {
-    0% {
-        opacity: 1;
-    }
+/* #endregion SCREENS */
 
-    100% {
-        opacity: 0;
-    }
-}
-
+/* #region MEDIA QUERIES */
 @media (max-width: 575.98px) {
     .divider {
         background: rgb(0, 0, 0);
@@ -552,4 +570,6 @@ h1 {
         width: 25px;
     }
 }
+
+/* #endregion MEDIA QUERIES */
 </style>

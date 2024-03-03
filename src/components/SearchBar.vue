@@ -36,6 +36,5 @@ input[type=search] {
     height: 25px;
     font-size: small;
     padding-left: 8px;
-
 }
 </style>
