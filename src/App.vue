@@ -172,17 +172,20 @@ export default {
 
 <template>
     <!-- WRAPPER -->
-    <div class="d-flex align-items-center justify-content-center mt-2 mt-sm-5">
+    <div class="d-flex align-items-center justify-content-center min-vh-100 my-3 my-sm-0">
 
         <div class="wrapper container-fluid">
             <!-- LEFT COLUMN -->
             <div class="row justify-content-center m-1 d-flex flex-column flex-sm-row">
 
+                <!-- TOP AND SEARCH BAR -->
                 <div
                     class="case col-12 col-sm-6 border border-danger bg-danger bg-opacity-75 rounded-top rounded-sm-left">
                     <div class="col">
 
                         <div class="d-flex align-items-center">
+
+                            <!-- ROUNDED SCREEN -->
                             <div class="round-screen col-2 border border-success bg-success bg-opacity-75 rounded-circle p-3 m-3 shadow"
                                 style="aspect-ratio: 1/1;">
                             </div>
@@ -190,6 +193,7 @@ export default {
                             <div class="col">
 
                                 <!-- modelValue è un valore di default? -->
+                                <!-- SEARCHBAR -->
                                 <SearchBar v-model:query="searchValue" @startSearch="search(searchValue)" />
 
                             </div>
@@ -203,6 +207,7 @@ export default {
 
                                 <template v-if="loading">
 
+                                    <!-- LOADER -->
                                     <div class="lds-spinner">
                                         <div></div>
                                         <div></div>
@@ -225,6 +230,7 @@ export default {
                                     <!-- <button class="capture" @click="capture(activePokemon.name)"
                                         v-if="!this.captured.includes(activePokemon.name)"></button> -->
 
+                                    <!-- CAPTURE BUTTON -->
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-pokeball capture" width="30" height="30"
                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -240,6 +246,7 @@ export default {
 
                                     <div>
 
+                                        <!-- ACTIVE POKEMON SPRITE -->
                                         <img class="preview"
                                             :src="activePokemon.sprites.other.showdown[`${side}_default`]"
                                             :alt="activePokemon.name + `${side}`" @click="changeSide()">
@@ -248,8 +255,7 @@ export default {
                                             {{ activePokemon.name.charAt(0).toUpperCase() + activePokemon.name.slice(1) }}
                                         </p>
 
-
-
+                                        <!-- ACTIVE POKEMON DATA -->
                                         <div class="my-1">
                                             <span class="me-2"><strong>ID:</strong> {{ activePokemon.id }}</span>
 
@@ -260,6 +266,7 @@ export default {
                                                 {{ activePokemon.weight }}</span>
                                         </div>
 
+                                        <!-- ACTIVE POKEMON STATS -->
                                         <template v-for="stat in filterPokemonData" :key="stat.name">
 
                                             <div class="d-flex align-items-center mt-1">
@@ -268,6 +275,7 @@ export default {
                                                     <span>{{ stat.name }}</span>
                                                 </div>
 
+                                                <!-- STAT PROGRESS BAR -->
                                                 <div class="stat-bar d-flex">
 
                                                     <div class="stat-value"
@@ -298,26 +306,36 @@ export default {
 
                 <!-- RIGHT COLUMN -->
                 <div
-                    class="case col-12 col-sm-4 border border-danger bg-danger bg-opacity-75 rounded-bottom rounded-sm-right">
-                    <div class="col-12 p-3 d-flex justify-content-center">
+                    class="case col-12 col-sm-4 border border-danger bg-danger bg-opacity-75 rounded-bottom rounded-sm-right py-3 d-flex justify-content-center">
+
+                    <div class="col-12 py-3 d-flex justify-content-center">
+
+                        <!-- SCREEN -->
                         <div class="screen side border border-success rounded p-2" style="height: 350px; width: 350px;">
+
+                            <!-- CAPTURED POKEMONS LIST -->
 
                             <template v-for="pokemon in captured" :key="pokemon">
 
                                 <div class="d-flex align-items-center border-bottom border-success">
+
+                                    <!-- CAPTURED POKEMON NAME -->
                                     <div class="col-2 col-sm me-3">
                                         <span>
-                                            <strong>{{ pokemon.charAt(0).toUpperCase() + pokemon.slice(1) }}</strong></span>
+                                            <strong>{{ pokemon.charAt(0).toUpperCase() + pokemon.slice(1) }}</strong>
+                                        </span>
                                     </div>
 
+                                    <!-- ACTION BUTTONS -->
                                     <div class="col">
+
                                         <button class="action rounded-pill me-1  my-1"
                                             @click="search(pokemon)">Show</button>
 
                                         <button class="action rounded-pill me-1  my-1"
                                             @click="release(pokemon)">Release</button>
-                                    </div>
 
+                                    </div>
 
                                 </div>
 
