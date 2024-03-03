@@ -176,9 +176,9 @@ export default {
 
 <template>
     <!-- WRAPPER -->
-    <div class="d-flex align-items-center vh-100">
+    <div class="d-flex align-items-center justify-content-center mt-2 mt-sm-5">
 
-        <div class="container-fluid">
+        <div class="wrapper container-fluid">
             <!-- LEFT COLUMN -->
             <div class="row justify-content-center m-1 d-flex flex-column flex-sm-row">
 
@@ -493,6 +493,10 @@ p,
 span,
 h1 {
     color: #022402;
+}
+
+.wrapper {
+    max-width: 768px;
 }
 
 .case {
