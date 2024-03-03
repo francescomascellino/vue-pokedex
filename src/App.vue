@@ -1,6 +1,4 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 import axios, { Axios } from 'axios';
 
 import SearchBar from './components/SearchBar.vue';
@@ -9,8 +7,6 @@ export default {
     name: "App",
 
     components: {
-
-        HelloWorld,
 
         SearchBar
 
