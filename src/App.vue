@@ -525,11 +525,6 @@ h1 {
     width: 5px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    /* background: rgb(30, 227, 14); */
-}
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgba(22, 83, 19, 1);
