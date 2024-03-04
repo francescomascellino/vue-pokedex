@@ -14,6 +14,7 @@ export default {
 <template>
 
     <div class="d-flex align-items-center">
+
         <input type="search" name="search" id="search" class="text-light rounded bg-tertiary bg-opacity-50 w-75 mx-1"
             placeholder="Search for a Pokémon!" :value="query" @input="$emit('update:query', $event.target.value)"
             @keypress.enter="$emit('startSearch')">

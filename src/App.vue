@@ -35,8 +35,10 @@ export default {
     filters: {
         // FORMATS STRINGS REMOVING - AND TURNING FIRST LETTER TO UPPERCASE
         formatStatName(value) {
+
             console.log(value);
             return value.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
         }
     },
 
@@ -49,9 +51,7 @@ export default {
 
         search(query) {
 
-            console.log(query);
-
-            // console.log('Search value:', query.toLowerCase());
+            console.log('Search value:', query.toLowerCase());
 
             console.log('Search query: https://pokeapi.co/api/v2/pokemon/' + `${query.toLowerCase()}`);
 
@@ -63,7 +63,7 @@ export default {
                 // TURNS THE searchValue TO LOWERCASE AND MAKES THE API CALL
                 axios.get('https://pokeapi.co/api/v2/pokemon/' + `${query.toLowerCase()}`)
                     .then(response => {
-                        console.log('data: ', response.data);
+
 
                         this.activePokemon = response.data;
 
@@ -76,7 +76,6 @@ export default {
                         setTimeout(() => {
                             this.loading = false;
                         }, 500); // 1000 milliseconds (1 seconds)
-
 
                     }).catch((error) => {
 
@@ -97,7 +96,7 @@ export default {
 
         capture(pokemon) {
 
-            console.log(this.captured);
+            console.log("captured:", this.captured);
 
             // IF THE POKEMON IS NOT IN THE CAPTURED ARRAY
             if (!this.captured.includes(pokemon)) {
@@ -125,11 +124,14 @@ export default {
 
             // REMOVES THE GIVEN POKEMON FROM THE CAPTURED ARRAY
             this.captured.splice(this.captured.indexOf(capturedPokemon), 1);
+
         },
 
         changeSide() {
+
             console.log(this.side);
             this.side = (this.side === 'front') ? 'back' : 'front';
+
         }
 
     },
@@ -147,6 +149,7 @@ export default {
             this.captured = [];
 
             console.log('captured:', this.captured);
+
         }
 
     },
@@ -192,9 +195,10 @@ export default {
 
                             <div class="col">
 
-                                <!-- modelValue è un valore di default? -->
                                 <!-- SEARCHBAR -->
+                                <!-- Per impostazione predefinita, v-model su un componente utilizza modelValue come prop e update:modelValue come evento. Possiamo modificare questi nomi passando un argomento a v-model: -->
                                 <SearchBar v-model:query="searchValue" @startSearch="search(searchValue)" />
+                                <!-- In questo caso, il componente figlio dovrebbe aspettarsi una prop title ed emettere un evento update:title per aggiornare il valore nel componente genitore -->
 
                             </div>
 
@@ -226,9 +230,6 @@ export default {
                                 </template>
 
                                 <template v-else-if="activePokemon">
-
-                                    <!-- <button class="capture" @click="capture(activePokemon.name)"
-                                        v-if="!this.captured.includes(activePokemon.name)"></button> -->
 
                                     <!-- CAPTURE BUTTON -->
                                     <svg xmlns="http://www.w3.org/2000/svg"
