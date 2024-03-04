@@ -338,7 +338,7 @@ export default {
                                 <div class="d-flex align-items-center border-bottom border-success">
 
                                     <!-- CAPTURED POKEMON NAME -->
-                                    <div class="col-2 col-sm me-3">
+                                    <div class="col-3 col-sm me-3">
                                         <span>
                                             <strong>{{ pokemon.charAt(0).toUpperCase() + pokemon.slice(1) }}</strong>
                                         </span>
@@ -347,10 +347,10 @@ export default {
                                     <!-- ACTION BUTTONS -->
                                     <div class="col">
 
-                                        <button class="action rounded-pill me-1  my-1"
+                                        <button class="action rounded-pill me-1 my-1"
                                             @click="search(pokemon)">Show</button>
 
-                                        <button class="action rounded-pill me-1  my-1"
+                                        <button class="action rounded-pill me-1 my-1"
                                             @click="release(pokemon)">Release</button>
 
                                     </div>
@@ -537,7 +537,7 @@ h1 {
 
 /* #region SCREENS */
 .action {
-    width: 50px;
+    width: 60x;
 }
 
 .capture {
