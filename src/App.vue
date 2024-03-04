@@ -28,6 +28,8 @@ export default {
 
             loading: false,
 
+            showAlert: false
+
         }
 
     },
@@ -132,6 +134,14 @@ export default {
             console.log(this.side);
             this.side = (this.side === 'front') ? 'back' : 'front';
 
+        },
+
+        showCaptureAlert() {
+            this.showAlert = true;
+        },
+
+        hideCaptureAlert() {
+            this.showAlert = false;
         }
 
     },
@@ -181,16 +191,20 @@ export default {
             <!-- LEFT COLUMN -->
             <div class="row justify-content-center m-1 d-flex flex-column flex-sm-row">
 
-                <!-- TOP AND SEARCH BAR -->
                 <div
                     class="case col-12 col-sm-6 border border-danger bg-danger bg-opacity-75 rounded-top rounded-sm-left">
                     <div class="col">
 
+                        <!-- TOP AND SEARCH BAR -->
                         <div class="d-flex align-items-center">
 
                             <!-- ROUNDED SCREEN -->
-                            <div class="round-screen col-2 border border-success bg-success bg-opacity-75 rounded-circle p-3 m-3 shadow"
+                            <div class="round-screen col-2 border border-success rounded-circle d-flex align-items-center justify-content-center p-3 m-3 shadow"
                                 style="aspect-ratio: 1/1;">
+
+                                <span class="capture-alert"
+                                    :style="{ display: showAlert ? 'block' : 'none' }"><strong>CATCH!</strong></span>
+
                             </div>
 
                             <div class="col">
@@ -232,18 +246,21 @@ export default {
                                 <template v-else-if="activePokemon">
 
                                     <!-- CAPTURE BUTTON -->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-pokeball capture" width="30" height="30"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        @click="capture(activePokemon.name)"
-                                        v-if="!this.captured.includes(activePokemon.name)" data-bs-toggle="tooltip"
-                                        data-bs-title="Default tooltip">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <circle cx="9" cy="9" r="9" transform="translate(3 3)" />
-                                        <circle cx="12" cy="12" r="3" />
-                                        <path d="M3 12h6m6 0h6" />
-                                    </svg>
+                                    <div class="capture m-o " @mouseover="showCaptureAlert"
+                                        @mouseout="hideCaptureAlert">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-pokeball" width="30" height="30"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            @click="capture(activePokemon.name)"
+                                            v-if="!this.captured.includes(activePokemon.name)">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <circle cx="9" cy="9" r="9" transform="translate(3 3)" />
+                                            <circle cx="12" cy="12" r="3" />
+                                            <path d="M3 12h6m6 0h6" />
+                                        </svg>
+                                    </div>
+
 
                                     <div>
 
@@ -457,7 +474,6 @@ export default {
 p,
 span,
 h1 {
-
     color: #022402;
 }
 
@@ -482,6 +498,10 @@ h1 {
 .round-screen {
     background: rgb(30, 227, 14);
     background: radial-gradient(circle, rgba(30, 227, 14, 1) 0%, rgba(22, 83, 19, 1) 100%);
+}
+
+.capture-alert {
+    text-shadow: 0 0 1px rgba(22, 83, 19, 1);
 }
 
 .screen {
@@ -530,11 +550,17 @@ h1 {
     height: 30px;
     width: 30px;
     cursor: pointer;
+
+    &:hover {
+        box-shadow: #022402 0px 0px 5px 2px;
+    }
+
 }
 
 .preview {
     display: block;
     margin: 0 auto;
+    max-width: 150px;
 }
 
 .stat-bar {

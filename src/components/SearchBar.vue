@@ -16,7 +16,7 @@ export default {
     <div class="d-flex align-items-center">
 
         <input type="search" name="search" id="search" class="text-light rounded bg-tertiary bg-opacity-50 w-75 mx-1"
-            placeholder="Search for a Pokémon!" :value="query" @input="$emit('update:query', $event.target.value)"
+            placeholder="Search a Pokémon" :value="query" @input="$emit('update:query', $event.target.value)"
             @keypress.enter="$emit('startSearch')">
 
         <button class="rounded-circle bg-danger border-1 me-1" @click="$emit('startSearch')"><i
